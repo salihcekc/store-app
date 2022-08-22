@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function LoadImage({ product, Handler }) {
+function LoadImage({ product, Handler, name }) {
   return (
     <div style={styles.container}>
       <Card style={styles.card}>
@@ -13,9 +13,10 @@ function LoadImage({ product, Handler }) {
           <Button
             style={styles.button}
             variant="primary"
+            // onClick={() => Handler(product)}
             onClick={() => Handler(product)}
           >
-            Add
+            {name}
           </Button>
         </Card.Body>
       </Card>

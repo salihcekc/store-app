@@ -43,9 +43,9 @@ root.render(
         >
           <Routes>
             <Route path="/add-cart" element={<AddCartScreen />} />
-            <Route path="/login" element={<LoginScreen />} />
-            <Route path="/main" element={<MainScreen />} />
             <Route path="/" element={<LoginScreen />} />
+            <Route path="/main" element={<MainScreen />} />
+            <Route path="/home" element={<MainScreen />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

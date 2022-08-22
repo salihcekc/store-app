@@ -49,8 +49,8 @@ function MainScreen() {
               <div key={index} style={{ marginBottom: "15px" }}>
                 <LoadImage
                   product={product}
-                  index={index}
                   Handler={addHandler}
+                  name={"Add"}
                 />
               </div>
             );

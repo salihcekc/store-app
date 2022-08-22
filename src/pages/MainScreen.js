@@ -40,19 +40,20 @@ function MainScreen() {
 
   return (
     <div style={styles.container}>
-      <div style={styles.spinner}>{loading === true ? <SpinnerComponent /> : null}</div>
-      <button onClick={() => navigate("/add-cart")}> Click </button>
+      <div style={styles.spinner}>
+        {loading === true ? <SpinnerComponent /> : null}
+      </div>
       <div style={styles.products}>
         {data && data.length > 0 ? (
           data.map((product, index) => {
             return (
-              <div key={index} style={{ marginBottom: "15px" }}>
+              <React.Fragment key={index}>
                 <LoadImage
                   product={product}
                   Handler={addHandler}
                   name={"Add"}
                 />
-              </div>
+              </React.Fragment>
             );
           })
         ) : (
@@ -67,8 +68,9 @@ export default MainScreen;
 
 const styles = {
   container: {
-    height: "100%",
-    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   spinner: {
     display: "flex",
@@ -78,7 +80,7 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    // justifyContent: "space-between",
-    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 };

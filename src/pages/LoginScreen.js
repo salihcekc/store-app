@@ -24,45 +24,27 @@ function LoginScreen() {
   return (
     <div style={styles.container}>
       <div style={styles.input}>
-        {/* <InputComponent
-          label={"User Name"}
-          value={login.username}
-          name={"username"}
-          type={"text"}
-          placeHolder={"Enter Username"}
-          onChange={onChange}
-        /> */}
         <FormComponent
-          label={"User Name"}
+          label={"User Name :"}
           value={login.username}
           name={"username"}
           type={"username"}
           placeHolder={"Enter Username"}
           onChange={onChange}
         />
-      </div>
-      <div style={styles.input}>
-        {/* <InputComponent
-          label={"Password"}
-          value={login.password}
-          name={"password"}
-          type={"password"}
-          placeHolder={"Enter Password"}
-          onChange={onChange}
-        /> */}
         <FormComponent
-          label={"Password"}
+          label={"Password :"}
           value={login.password}
           name={"password"}
           type={"password"}
           placeHolder={"Enter Password"}
           onChange={onChange}
         />
-      </div>
-      <div style={styles.button}>
-        <Button onClick={handleSubmit} variant="primary" type="submit">
-          Submit
-        </Button>
+        <div style={styles.button}>
+          <Button onClick={handleSubmit} variant="primary" type="submit">
+            Submit
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -75,18 +57,24 @@ const styles = {
     height: "100%",
     width: "100%",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    flexDirection: "column",
+    justifyContent: "center",
   },
   input: {
-    width: "100%",
+    borderRadius: "20px",
+    height: "30vh",
+    backgroundColor: "gray",
+    alignItems: "center",
+    width: "40vw",
+    maxWidth: "450px",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
   },
   button: {
+    marginTop: 20,
     width: "25%",
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
 };

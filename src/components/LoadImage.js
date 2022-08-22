@@ -4,54 +4,66 @@ import Button from "react-bootstrap/Button";
 
 function LoadImage({ product, Handler, name }) {
   return (
-    <div style={styles.container}>
-      <Card style={styles.card}>
-        <Card.Img style={styles.image} variant="top" src={product.image} />
-        <Card.Body style={styles.info}>
-          <Card.Title>{product.title}</Card.Title>
-          <Card.Text>$ {product.price}</Card.Text>
+    <Card style={styles.card}>
+      <Card.Img style={styles.image} variant="top" src={product.image} />
+      <Card.Body style={styles.info}>
+        <div style={{ flex: 1, backgroundColor: "green" }}>
+          <Card.Title style={{ fontSize: 22, textAlign: "center" }}>
+            {product.title}
+          </Card.Title>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Card.Text
+            style={{
+              fontSize: 20,
+              textAlign: "center",
+            }}
+          >
+            $ {product.price}
+          </Card.Text>
           <Button
             style={styles.button}
             variant="primary"
-            // onClick={() => Handler(product)}
             onClick={() => Handler(product)}
           >
             {name}
           </Button>
-        </Card.Body>
-      </Card>
-    </div>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 
 export default LoadImage;
 
 const styles = {
-  container: { height: "100%" },
   card: {
     display: "flex",
-    flexDirection: "column",
     alignItems: "center",
-    // backgroundColor: "red",
     margin: "10px",
-    height: "100%",
-    width: "200px",
+    height: "50vh",
+    minWidth: "200px",
+    maxWidth: "300px",
+    width: "22vw",
+    padding: 5,
   },
   image: {
     width: "150px",
     height: "150px",
-    marginTop: "10px",
-    marginLeft: "10px",
   },
   info: {
     display: "flex",
+    backgroundColor: "red",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
   },
-
   button: {
     width: "100px",
-    marginBottom: "15px",
+    backgroundColor: "pink",
   },
 };

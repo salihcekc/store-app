@@ -27,7 +27,6 @@ root.render(
           display: "flex",
           width: "100%",
           height: "100vh",
-          backgroundColor: "red",
           flexDirection: "column",
         }}
       >
@@ -37,7 +36,6 @@ root.render(
             display: "flex",
             width: "100%",
             flex: 1,
-            backgroundColor: "yellow",
             flexDirection: "column",
           }}
         >

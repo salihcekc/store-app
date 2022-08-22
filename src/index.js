@@ -26,7 +26,7 @@ root.render(
           flex: 1,
           display: "flex",
           width: "100%",
-          height: "100%",
+          height: "100vh",
           backgroundColor: "red",
           flexDirection: "column",
         }}

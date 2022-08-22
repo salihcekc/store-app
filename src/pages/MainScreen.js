@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import React, { useState } from "react";
-
 import { addItem } from "../store/action/ItemActions";
-
 import LoadImage from "../components/LoadImage";
 import SpinnerComponent from "../components/SpinnerComponent";
+import { useNavigate } from "react-router-dom";
 
 function MainScreen() {
+  const navigate = useNavigate();
   const favourite = useSelector((state) => state.AddItemReducer.data);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,16 +40,17 @@ function MainScreen() {
 
   return (
     <div style={styles.container}>
-      <div>{loading === true ? <SpinnerComponent /> : null}</div>
+      <div style={styles.spinner}>{loading === true ? <SpinnerComponent /> : null}</div>
+      <button onClick={() => navigate("/add-cart")}> Click </button>
       <div style={styles.products}>
         {data && data.length > 0 ? (
           data.map((product, index) => {
             return (
-              <div key={index}>
+              <div key={index} style={{ marginBottom: "15px" }}>
                 <LoadImage
                   product={product}
                   index={index}
-                  addHandler={addHandler}
+                  Handler={addHandler}
                 />
               </div>
             );
@@ -70,11 +70,15 @@ const styles = {
     height: "100%",
     width: "100%",
   },
+  spinner: {
+    display: "flex",
+    justifyContent: "center",
+  },
   products: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    // justifyContent: "space-between",
     width: "100%",
   },
 };

@@ -12,8 +12,8 @@ export default PageNotFound;
 
 const styles = {
   container: {
-    height: "83.1vh",
-    width: "100vw",
+    height: "100%",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

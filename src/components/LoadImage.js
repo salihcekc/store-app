@@ -2,9 +2,9 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function LoadImage({ product, addHandler }) {
+function LoadImage({ product, Handler }) {
   return (
-    <div style={{ height: "100%" }}>
+    <div style={styles.container}>
       <Card style={styles.card}>
         <Card.Img style={styles.image} variant="top" src={product.image} />
         <Card.Body style={styles.info}>
@@ -13,7 +13,7 @@ function LoadImage({ product, addHandler }) {
           <Button
             style={styles.button}
             variant="primary"
-            onClick={() => addHandler(product)}
+            onClick={() => Handler(product)}
           >
             Add
           </Button>
@@ -26,7 +26,7 @@ function LoadImage({ product, addHandler }) {
 export default LoadImage;
 
 const styles = {
-  container: {},
+  container: { height: "100%" },
   card: {
     display: "flex",
     flexDirection: "column",

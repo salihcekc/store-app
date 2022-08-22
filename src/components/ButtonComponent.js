@@ -27,6 +27,6 @@ export default ButtonComponent;
 const styles = {
   button: {
     width: "100%",
-    marginTop: "10px",
+    marginTop: "100px",
   },
 };

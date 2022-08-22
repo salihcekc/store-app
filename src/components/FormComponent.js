@@ -1,11 +1,10 @@
 import Form from "react-bootstrap/Form";
 
-function FormComponent({ value, name, type, placeHolder, onChange }) {
+function FormComponent({ value, name, type, placeHolder, onChange, label }) {
   return (
-    <div >
-      <Form >
-        <Form.Group controlId="formBasicEmail" style={styles.group}>
-          <Form.Label>User Name</Form.Label>
+    <div style={{ width:"25%"}} >
+      <div style={styles.group}>
+          <Form.Label style={styles.label} > {label} </Form.Label>
           <Form.Control
             style={styles.input}
             value={value}
@@ -14,9 +13,7 @@ function FormComponent({ value, name, type, placeHolder, onChange }) {
             placeholder={placeHolder}
             onChange={onChange}
           />
-          <Form.Text className="text-muted"></Form.Text>
-        </Form.Group>
-      </Form>
+        </div>
     </div>
   );
 }
@@ -29,15 +26,18 @@ const styles = {
       height: "100%",
       width: "100%",
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
+    },
+    label: {
+      width:"50%"
     },
     input: {
       width: "100%",
     },
     button: {
-      width:"59%",
+      width:"50%",
       marginTop: "10px"
     }
   };

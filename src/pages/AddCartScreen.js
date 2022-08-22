@@ -28,7 +28,7 @@ export default function AddCartScreen() {
               <img
                 style={{ height: "90px", width: "90px" }}
                 src={item.image}
-                alt=""
+                alt="comment"
               />
               {/* <button onClick={() => deleteHandler}>Delete Item</button> */}
             </div>

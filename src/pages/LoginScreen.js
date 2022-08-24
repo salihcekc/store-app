@@ -1,11 +1,13 @@
 import { useState } from "react";
 import FormComponent from "../components/FormComponent";
-// import InputComponent from "../components/InputComponent";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import GetDynamicDimensions from "../hooks/GetDynamicDimensions";
 
 function LoginScreen() {
   const [login, setLogin] = useState({ username: "", password: "" });
+  const [screenSize, getDimension] = GetDynamicDimensions();
+  const { dynamicWidth, dynamicHeight } = screenSize;
 
   const onChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -20,6 +22,38 @@ function LoginScreen() {
       alert("Yanlış kullanıcı");
     }
   };
+
+  const styles = {
+    container: {
+      height: dynamicHeight / 2,
+      width: dynamicWidth,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    input: {
+      borderRadius: "20px",
+      height: dynamicHeight / 3,
+      backgroundColor: "gray",
+      alignItems: "center",
+      width: dynamicWidth / 2,
+      maxWidth: "450px",
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      webkitBoxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
+      // mozBoxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
+      boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
+    },
+    button: {
+      marginTop: 20,
+      width: "25%",
+      height:"20%",
+      display: "flex",
+      justifyContent: "center",
+    },
+  };
+  
 
   return (
     <div style={styles.container}>
@@ -42,7 +76,7 @@ function LoginScreen() {
         />
         <div style={styles.button}>
           <Button onClick={handleSubmit} variant="primary" type="submit">
-            Submit
+            Login
           </Button>
         </div>
       </div>
@@ -52,29 +86,3 @@ function LoginScreen() {
 
 export default LoginScreen;
 
-const styles = {
-  container: {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    borderRadius: "20px",
-    height: "30vh",
-    backgroundColor: "gray",
-    alignItems: "center",
-    width: "40vw",
-    maxWidth: "450px",
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-  button: {
-    marginTop: 20,
-    width: "25%",
-    display: "flex",
-    justifyContent: "center",
-  },
-};

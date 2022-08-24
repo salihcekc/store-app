@@ -3,15 +3,19 @@ import React, { useState } from "react";
 import { addItem } from "../store/action/ItemActions";
 import LoadImage from "../components/LoadImage";
 import SpinnerComponent from "../components/SpinnerComponent";
-import { useNavigate } from "react-router-dom";
+import GetDynamicDimensions from "../hooks/GetDynamicDimensions";
 
 function MainScreen() {
-  const navigate = useNavigate();
   const favourite = useSelector((state) => state.AddItemReducer.data);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [screenSize, getDimension] = GetDynamicDimensions();
   const dispatch = useDispatch();
 
+  const { dynamicWidth, dynamicHeight } = screenSize;
+
+  console.log(dynamicWidth, "dynamicWidth");
+  
   React.useEffect(() => {
     download();
   }, []);
@@ -50,7 +54,7 @@ function MainScreen() {
               <React.Fragment key={index}>
                 <LoadImage
                   product={product}
-                  Handler={addHandler}
+                  addHandler={addHandler}
                   name={"Add"}
                 />
               </React.Fragment>
@@ -69,12 +73,15 @@ export default MainScreen;
 const styles = {
   container: {
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
   spinner: {
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: "45%",
   },
   products: {
     display: "flex",

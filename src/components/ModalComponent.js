@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
+import React, {useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-function ModalComponent(message, smShow, setSmShow) {
+export default function ModalComponent({message, show, setShow}) {
+  const handleClose = () => setShow(false);
 
   return (
-    <div>
-      <Modal
-        size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
-        aria-labelledby="example-modal-sizes-title-sm">
+    <>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-sm">{message}</Modal.Title>
+          <Modal.Title>Login Error</Modal.Title>
         </Modal.Header>
-        <Modal.Body>...</Modal.Body>
+        <Modal.Body>{message}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }
-
-export default ModalComponent;

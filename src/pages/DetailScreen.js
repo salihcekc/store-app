@@ -1,9 +1,9 @@
 import React from 'react'
 
-function DetailScreen() {
+function DetailScreen({ product }) {
   return (
     <div>
-        <h1>Detail Screen</h1>
+      {product.title}
     </div>
   )
 }

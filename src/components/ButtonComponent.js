@@ -1,6 +1,6 @@
-import Button from "react-bootstrap/Button";
+import Button from 'react-bootstrap/Button';
 
-function ButtonComponent({ variant, onSubmit }) {
+function ButtonComponent({variant, onSubmit}) {
   // {
   //     Primary,
   //     Secondary,
@@ -14,7 +14,6 @@ function ButtonComponent({ variant, onSubmit }) {
 
   return (
     <div style={styles.button}>
-      
       <Button variant={variant} onSubmit={onSubmit} style={styles.button}>
         Login
       </Button>
@@ -26,7 +25,7 @@ export default ButtonComponent;
 
 const styles = {
   button: {
-    width: "100%",
-    marginTop: "100px",
+    width: '100%',
+    marginTop: '100px',
   },
 };

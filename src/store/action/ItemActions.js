@@ -7,7 +7,7 @@ export const resetItem = () => ({
   type: "RESET",
 });
 
-export const deleteItem = (id) => ({
+export const deleteItem = (index) => ({
   type: "DELETE_ITEM",
-  payload: id,
+  payload: index,
 });

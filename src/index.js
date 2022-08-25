@@ -12,7 +12,7 @@ import store from "./store/store";
 import Navbars from "./components/Navbars";
 import Footer from "./components/Footer";
 import AddCardScreen from "./pages/AddCardScreen";
-
+import DetailScreen from "./pages/DetailScreen";
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const styles = {
@@ -40,11 +40,12 @@ root.render(
         <Navbars />
         <div style={styles.footer}>
           <Routes>
-            <Route path="/add-cart" element={<AddCardScreen />} />
+            <Route path="/add-card" element={<AddCardScreen />} />
             <Route path="/" element={<LoginScreen />} />
             <Route path="/main" element={<MainScreen />} />
             <Route path="/home" element={<MainScreen />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="/details" element={<DetailScreen />} />
           </Routes>
         </div>
         <Footer />

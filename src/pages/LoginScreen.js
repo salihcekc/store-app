@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom';
 import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
 import ModalComponent from '../components/ModalComponent';
+import {useDispatch} from 'react-redux';
+import {GetUserName} from '../store/action/getUserName';
 
 function LoginScreen() {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ function LoginScreen() {
   const {dynamicWidth, dynamicHeight} = screenSize;
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState();
+  const dispatch = useDispatch();
 
   const onChange = e => {
     setLogin({...login, [e.target.name]: e.target.value});
@@ -19,13 +22,15 @@ function LoginScreen() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (login.username == '' && login.password == '') {
+    if (login.username === '' && login.password === '') {
       setMessage('Fill area!');
       setShow(true);
       return;
     }
-    if (login.username === 'a' && login.password === 'a') navigate('/main');
-    else {
+    if (login.username === 'a' && login.password === 'a') {
+      navigate('/main');
+      dispatch(GetUserName(login.username));
+    } else {
       setMessage('Wrong username or password');
       setShow(true);
     }
@@ -37,6 +42,7 @@ function LoginScreen() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundImage: "url()"
     },
     input: {
       borderRadius: '20px',

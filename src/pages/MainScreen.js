@@ -39,7 +39,7 @@ function MainScreen() {
   };
 
   const addHandler = (item) => {
-    dispatch(addItem(item));
+    dispatch(addItem(item))
   };
 
   return (
@@ -56,6 +56,9 @@ function MainScreen() {
                   product={product}
                   addHandler={addHandler}
                   name={"Add"}
+                  parameter={product}
+                  modalMessage={"Added"}
+                  modalTitle={"Added"}
                 />
               </React.Fragment>
             );

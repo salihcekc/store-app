@@ -2,6 +2,8 @@ const initialState = {
   data: [],
 };
 
+
+
 const AddItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_ITEM":
@@ -17,7 +19,7 @@ const AddItemReducer = (state = initialState, action) => {
     case "DELETE_ITEM":
       return {
         ...state,
-        data: state.data.filter((item) => item.id !== action.payload),
+        data: state.data.filter((item) => item !== state.data[action.payload]),
       };
     default:
       return state;

@@ -63,7 +63,7 @@ export default function AddCartScreen() {
           Reset Items
         </button>
       </div>
-      <div style={{width: '100%', overflowX: 'scroll', display: 'flex', justifyContent: 'space-between'}}>
+      <div style={{width: '100%', overflowX: 'scroll', display: 'flex', justifyContent: 'space-between', flex:1, backgroundColor:"yellow"}}>
         {addedItems &&
           addedItems.map((item, index) => {
             console.log(index);
@@ -77,7 +77,7 @@ export default function AddCartScreen() {
                   parameter={index}
                   modalMessage={'Deleted'}
                   modalTitle={'Delete'}
-                />
+                /> 
                 {/* <img style={styles.image} src={item.image} alt="" />
               {item.title}
               <button style={styles.button} onClick={() => deleteHandler(item.id)}>

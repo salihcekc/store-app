@@ -6,7 +6,8 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import ModalComponent from './ModalComponent';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import DetailScreen from '../pages/DetailScreen';
+import { useDispatch } from "react-redux"
+import { Details } from "../store/action/DetailItemAction"
 
 function LoadImage({product, addHandler, name, parameter, modalMessage, modalTitle}) {
   const [screenSize, getDimension] = GetDynamicDimensions();
@@ -14,6 +15,11 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const ItemOfDetails = (product) => {
+    dispatch(Details(product));
+  }
 
   const styles = {
     card: {
@@ -31,11 +37,6 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
     },
   };
 
-  const openInNewTab = url => {
-    const newWindow = window.open(url);
-    if (newWindow) newWindow.opener = null;
-  };
-
   return (
     <div>
       <div>
@@ -44,9 +45,8 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
       <Card style={styles.card}>
         <Card.Img
           onClick={() => {
-            openInNewTab(product.image);
-            <DetailScreen product={product} />;
-            // navigate('/details');
+            ItemOfDetails(product);
+            navigate('/details');
           }}
           style={styles.image}
           variant="top"

@@ -14,7 +14,7 @@ function MainScreen() {
 
   const { dynamicWidth, dynamicHeight } = screenSize;
 
-  console.log(dynamicWidth, "dynamicWidth");
+  // console.log(dynamicWidth, "dynamicWidth");
   
   React.useEffect(() => {
     download();

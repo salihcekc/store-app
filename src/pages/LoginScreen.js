@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import FormComponent from '../components/FormComponent';
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom';
@@ -25,6 +25,7 @@ function LoginScreen() {
     if (login.username === '' && login.password === '') {
       setMessage('Fill area!');
       setShow(true);
+      localStorage.setItem("username", login.username)
       return;
     }
     if (login.username === 'a' && login.password === 'a') {
@@ -36,13 +37,19 @@ function LoginScreen() {
     }
   };
 
+  // useEffect(() => {
+  //   localStorage.setItem('username', login.username);
+  // }, [login]);
+
+  console.log(localStorage.getItem('username'));
+
   const styles = {
     container: {
       flex: 1,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundImage: "url()"
+      backgroundImage: 'url()',
     },
     input: {
       borderRadius: '20px',
@@ -54,8 +61,8 @@ function LoginScreen() {
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',
-      webkitBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
-      // mozBoxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
+      WebkitBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+      MozBoxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
       boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
     },
     button: {

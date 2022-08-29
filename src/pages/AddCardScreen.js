@@ -2,16 +2,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {resetItem, deleteItem} from '../store/action/ItemActions';
 import LoadImage from '../components/LoadImage';
 import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
+import {useState} from 'react';
 
 export default function AddCartScreen() {
   const addedItems = useSelector(state => state.AddItemReducer.data);
   const [screenSize, getDimension] = GetDynamicDimensions();
   const {dynamicWidth, dynamicHeight} = screenSize;
-
-  console.log(
-    useSelector(state => state.AddItemReducer),
-    'data',
-  );
 
   const dispatch = useDispatch();
   const deleteHandler = id => {
@@ -20,6 +16,39 @@ export default function AddCartScreen() {
   const resetHandler = () => {
     dispatch(resetItem());
   };
+
+  console.log(addedItems, 'added items');
+
+  // // multiple item
+
+  // const [cardItem, setCardItem] = useState([]);
+  // const count = {};
+
+  // for (let i = 0; i < addedItems.length; i++) {
+  //   if (cardItem.includes(addedItems[i]) === true ) {
+  //     return;
+  //   } else {
+  //     setCardItem([...cardItem, addedItems[i]]);
+  //   }
+  // }
+
+  // for (const item of addedItems) {
+  //   if (count[item]) {
+  //     count[item] += 1;
+  //   } else {
+  //     count[item] = 1;
+  //   }
+  // }
+
+  // console.log(cardItem, "card item");
+
+  // // multiple item
+
+  // console.log(
+  //   useSelector(state => state.AddItemReducer),
+  //   'data',
+  // );
+
   const styles = {
     container: {
       height: '100%',
@@ -63,12 +92,18 @@ export default function AddCartScreen() {
           Reset Items
         </button>
       </div>
-      <div style={{width: '100%', overflowX: 'scroll', display: 'flex', justifyContent: 'space-between', flex:1, backgroundColor:"yellow"}}>
-        {addedItems &&
-          addedItems.map((item, index) => {
-            console.log(index);
+      <div
+        style={{
+          width: '100%',
+          overflowX: 'scroll',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flex: 1,
+          backgroundColor: 'yellow',
+        }}>
+        {/* {cardItem &&
+          cardItem.map((item, index) => {
             return (
-              // <LoadImage product={item} addHandler={deleteHandler} name={"Delete"} />
               <div key={index} style={styles.card}>
                 <LoadImage
                   product={item}
@@ -77,12 +112,23 @@ export default function AddCartScreen() {
                   parameter={index}
                   modalMessage={'Deleted'}
                   modalTitle={'Delete'}
-                /> 
-                {/* <img style={styles.image} src={item.image} alt="" />
-              {item.title}
-              <button style={styles.button} onClick={() => deleteHandler(item.id)}>
-                Delete Item
-              </button> */}
+                />
+              </div>
+            );
+          })} */}
+
+        {addedItems &&
+          addedItems.map((item, index) => {
+            return (
+              <div key={index} style={styles.card}>
+                <LoadImage
+                  product={item}
+                  name={'Delete'}
+                  addHandler={deleteHandler}
+                  parameter={index}
+                  modalMessage={'Deleted'}
+                  modalTitle={'Delete'}
+                />
               </div>
             );
           })}

@@ -11,7 +11,7 @@ function DetailScreen() {
       <div>
         <img src={item[0].image} alt="" style={{height: '400px', width: '400px', margin:5}} />
       </div>
-      <div>
+      <div style={{ border:"solid" }}>
         <ul>
           <h1> {item[0].title} </h1>
           <li><h4> {item[0].category} </h4></li>

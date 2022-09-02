@@ -45,7 +45,7 @@ root.render(
             <Route path="/main" element={<MainScreen />} />
             <Route path="/home" element={<MainScreen />} />
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/details" element={<DetailScreen />} />
+            <Route path="/detail/:id" element={<DetailScreen />} />
           </Routes>
         </div>
         <Footer />

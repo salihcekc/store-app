@@ -21,11 +21,11 @@ function MainScreen() {
   }, []);
 
   React.useEffect(() => {
-    console.log(data, "data");
+    // console.log(data, "data");
   }, [data]);
 
   React.useEffect(() => {
-    console.log(favourite, "favourite");
+    // console.log(favourite, "favourite");
   }, [favourite]);
 
   const download = async () => {

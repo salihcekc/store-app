@@ -25,12 +25,12 @@ function LoginScreen() {
     if (login.username === '' && login.password === '') {
       setMessage('Fill area!');
       setShow(true);
-      localStorage.setItem("username", login.username)
       return;
     }
     if (login.username === 'a' && login.password === 'a') {
       navigate('/main');
       dispatch(GetUserName(login.username));
+      localStorage.setItem("username", login.username)
     } else {
       setMessage('Wrong username or password');
       setShow(true);

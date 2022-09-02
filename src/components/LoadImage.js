@@ -5,7 +5,7 @@ import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
 import LinesEllipsis from 'react-lines-ellipsis';
 import ModalComponent from './ModalComponent';
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux"
 import { Details } from "../store/action/DetailItemAction"
 
@@ -45,8 +45,8 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
       <Card style={styles.card}>
         <Card.Img
           onClick={() => {
-            ItemOfDetails(product);
-            navigate('/details');
+            // ItemOfDetails(product);
+            navigate(`/detail/${product.id}`);
           }}
           style={styles.image}
           variant="top"

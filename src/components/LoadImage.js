@@ -5,9 +5,10 @@ import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
 import LinesEllipsis from 'react-lines-ellipsis';
 import ModalComponent from './ModalComponent';
 import {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux"
-import { Details } from "../store/action/DetailItemAction"
+import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {Details} from '../store/action/DetailItemAction';
+import {useMediaQuery} from 'react-responsive';
 
 function LoadImage({product, addHandler, name, parameter, modalMessage, modalTitle}) {
   const [screenSize, getDimension] = GetDynamicDimensions();
@@ -16,13 +17,18 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
   const [message, setMessage] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1224px)',
+  });
+  const isTablet = useMediaQuery({query: '(min-width: 750px)'});
+  const isMobile = useMediaQuery({query: '(max-width: 500px)'});
 
-  const ItemOfDetails = (product) => {
+  const ItemOfDetails = product => {
     dispatch(Details(product));
-  }
+  };
 
   const styles = {
-    card: {
+    cardDesktopOrLaptop: {
       display: 'flex',
       alignItems: 'center',
       margin: '10px',
@@ -31,9 +37,35 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
       paddingTop: 10,
       padding: 10,
     },
-    image: {
+    cardTablet: {
+      display: 'flex',
+      alignItems: 'center',
+      margin: '5px',
+      width: dynamicWidth / 4,
+      height: dynamicHeight / 2,
+      paddingTop: 10,
+      padding: 7,
+    },
+    cardMobile: {
+      display: 'flex',
+      alignItems: 'center',
+      margin: '10px',
+      width: dynamicWidth / 2,
+      height: dynamicHeight / 2,
+      paddingTop: 10,
+      padding: 10,
+    },
+    imageDesktopOrLaptop: {
       width: dynamicWidth / 9,
       height: dynamicHeight / 6,
+    },
+    imageTablet: {
+      width: dynamicWidth / 9,
+      height: dynamicHeight / 6,
+    },
+    imageMobile: {
+      width: dynamicWidth / 4,
+      height: dynamicHeight / 7,
     },
   };
 
@@ -42,13 +74,13 @@ function LoadImage({product, addHandler, name, parameter, modalMessage, modalTit
       <div>
         <ModalComponent title={modalTitle} show={show} setShow={setShow} message={message} />
       </div>
-      <Card style={styles.card}>
+      <Card style={isDesktopOrLaptop ? styles.cardDesktopOrLaptop : (isTablet ? styles.cardTablet : (isMobile ? styles.cardMobile : null))}>
         <Card.Img
           onClick={() => {
-            // ItemOfDetails(product);
             navigate(`/detail/${product.id}`);
           }}
-          style={styles.image}
+          style={isDesktopOrLaptop ? styles.imageDesktopOrLaptop : (isTablet ? styles.imageTablet : (isMobile ? styles.imageMobile : null))}
+          // style={styles.image}
           variant="top"
           src={product.image}
         />

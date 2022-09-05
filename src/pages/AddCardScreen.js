@@ -2,7 +2,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {resetItem, deleteItem} from '../store/action/ItemActions';
 import LoadImage from '../components/LoadImage';
 import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
-import {useState} from 'react';
 
 export default function AddCartScreen() {
   const addedItems = useSelector(state => state.AddItemReducer.data);
@@ -19,36 +18,6 @@ export default function AddCartScreen() {
 
   console.log(addedItems, 'added items');
 
-  // // multiple item
-
-  // const [cardItem, setCardItem] = useState([]);
-  // const count = {};
-
-  // for (let i = 0; i < addedItems.length; i++) {
-  //   if (cardItem.includes(addedItems[i]) === true ) {
-  //     return;
-  //   } else {
-  //     setCardItem([...cardItem, addedItems[i]]);
-  //   }
-  // }
-
-  // for (const item of addedItems) {
-  //   if (count[item]) {
-  //     count[item] += 1;
-  //   } else {
-  //     count[item] = 1;
-  //   }
-  // }
-
-  // console.log(cardItem, "card item");
-
-  // // multiple item
-
-  // console.log(
-  //   useSelector(state => state.AddItemReducer),
-  //   'data',
-  // );
-
   const styles = {
     container: {
       height: '100%',
@@ -61,7 +30,7 @@ export default function AddCartScreen() {
     card: {
       display: 'flex',
       flexDirection: 'row',
-      backgroundColor: 'red',
+      // backgroundColor: 'red',
       width: dynamicWidth,
       height: '100%',
       justifyContent: 'space-between',
@@ -69,7 +38,7 @@ export default function AddCartScreen() {
     },
     button: {
       height: '30px',
-      borderRadius: '20px',
+      borderRadius: '15px',
     },
   };
 
@@ -99,7 +68,7 @@ export default function AddCartScreen() {
           display: 'flex',
           justifyContent: 'space-between',
           flex: 1,
-          backgroundColor: 'yellow',
+          backgroundColor: '#FBF8F1',
         }}>
         {/* {cardItem &&
           cardItem.map((item, index) => {

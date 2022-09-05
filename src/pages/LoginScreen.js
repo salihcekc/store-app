@@ -6,8 +6,15 @@ import GetDynamicDimensions from '../hooks/GetDynamicDimensions';
 import ModalComponent from '../components/ModalComponent';
 import {useDispatch} from 'react-redux';
 import {GetUserName} from '../store/action/getUserName';
+import {useMediaQuery} from 'react-responsive';
 
 function LoginScreen() {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1224px)',
+  });
+  const isTablet = useMediaQuery({query: '(min-width: 750px)'});
+  const isMobile = useMediaQuery({query: '(max-width: 500px)'});
+
   const navigate = useNavigate();
   const [login, setLogin] = useState({username: '', password: ''});
   const [screenSize, getDimension] = GetDynamicDimensions();
@@ -30,7 +37,7 @@ function LoginScreen() {
     if (login.username === 'a' && login.password === 'a') {
       navigate('/main');
       dispatch(GetUserName(login.username));
-      localStorage.setItem("username", login.username)
+      localStorage.setItem('username', login.username);
     } else {
       setMessage('Wrong username or password');
       setShow(true);
@@ -49,9 +56,9 @@ function LoginScreen() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundImage: 'url()',
+      backgroundImage: 'url("../../loginScreen.jpg")',
     },
-    input: {
+    inputDesktopOrLaptop: {
       borderRadius: '20px',
       height: dynamicHeight / 3,
       backgroundColor: 'gray',
@@ -62,7 +69,35 @@ function LoginScreen() {
       justifyContent: 'center',
       flexDirection: 'column',
       WebkitBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
-      MozBoxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)",
+      MozBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+      boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+    },
+    inputTablet: {
+      borderRadius: '20px',
+      height: dynamicHeight / 3,
+      backgroundColor: 'gray',
+      alignItems: 'center',
+      width: dynamicWidth / 2,
+      maxWidth: '450px',
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      WebkitBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+      MozBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+      boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+    },
+    inputMobile: {
+      borderRadius: '20px',
+      height: dynamicHeight / 3,
+      backgroundColor: 'gray',
+      alignItems: 'center',
+      width: dynamicWidth / 1.1,
+      // maxWidth: '450px',
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      WebkitBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+      MozBoxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
       boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
     },
     button: {
@@ -73,7 +108,8 @@ function LoginScreen() {
   return (
     <div style={styles.container}>
       <ModalComponent show={show} setShow={setShow} message={message} />
-      <div style={styles.input}>
+      <div
+        style={isDesktopOrLaptop ? styles.inputDesktopOrLaptop : isTablet ? styles.inputTablet : isMobile ? styles.inputMobile : null}>
         <FormComponent
           label={'User Name :'}
           value={login.username}
